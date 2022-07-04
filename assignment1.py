@@ -16,23 +16,15 @@ def min_max(arr:StaticArray) -> (int, int):
     """
     TODO: Write this implementation
     """
-    min_val = arr[0]
-    max_val = min_val
-    for numbers in range(arr):
-        if numbers > max_val:
-            max_val = numbers
-        if numbers < min_val:
-            min_val= numbers
-    return (min_val, max_val)
+    min = arr[0]
+    max = arr[0]
 
-
-
-
-
-
-
-
-    pass
+    for numbers in arr:
+        if numbers > max:
+            max = numbers
+        if numbers < min:
+            min = numbers
+    return min, max
 
 # ------------------- PROBLEM 2 - FIZZ_BUZZ ---------------------------------
 
