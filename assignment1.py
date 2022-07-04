@@ -12,19 +12,19 @@ from static_array import *
 
 # ------------------- PROBLEM 1 - MIN_MAX -----------------------------------
 
-def min_max(arr:StaticArray) -> (int, int):
+def min_max(arr: StaticArray) -> (int, int):
     """
     TODO: Write this implementation
     """
-    min = arr[0]
-    max = arr[0]
 
-    for numbers in arr:
-        if numbers > max:
-            max = numbers
-        if numbers < min:
-            min = numbers
-    return min, max
+    minimum = arr[0]
+    maximum = arr[0]
+
+    for number in range(arr.length()):
+        minimum = min(minimum, arr[number])
+        maximum = max(maximum, arr[number])
+
+    return (minimum, maximum)
 
 # ------------------- PROBLEM 2 - FIZZ_BUZZ ---------------------------------
 
@@ -34,6 +34,7 @@ def fizz_buzz(arr: StaticArray) -> StaticArray:
     """
     pass
 
+
 # ------------------- PROBLEM 3 - REVERSE -----------------------------------
 
 def reverse(arr: StaticArray) -> None:
@@ -41,6 +42,7 @@ def reverse(arr: StaticArray) -> None:
     TODO: Write this implementation
     """
     pass
+
 
 # ------------------- PROBLEM 4 - ROTATE ------------------------------------
 
@@ -50,6 +52,7 @@ def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
     pass
 
+
 # ------------------- PROBLEM 5 - SA_RANGE ----------------------------------
 
 def sa_range(start: int, end: int) -> StaticArray:
@@ -57,6 +60,7 @@ def sa_range(start: int, end: int) -> StaticArray:
     TODO: Write this implementation
     """
     pass
+
 
 # ------------------- PROBLEM 6 - IS_SORTED ---------------------------------
 
@@ -66,6 +70,7 @@ def is_sorted(arr: StaticArray) -> int:
     """
     pass
 
+
 # ------------------- PROBLEM 7 - FIND_MODE -----------------------------------
 
 def find_mode(arr: StaticArray) -> (int, int):
@@ -73,6 +78,7 @@ def find_mode(arr: StaticArray) -> (int, int):
     TODO: Write this implementation
     """
     pass
+
 
 # ------------------- PROBLEM 8 - REMOVE_DUPLICATES -------------------------
 
@@ -82,6 +88,7 @@ def remove_duplicates(arr: StaticArray) -> StaticArray:
     """
     pass
 
+
 # ------------------- PROBLEM 9 - COUNT_SORT --------------------------------
 
 def count_sort(arr: StaticArray) -> StaticArray:
@@ -90,6 +97,7 @@ def count_sort(arr: StaticArray) -> StaticArray:
     """
     pass
 
+
 # ------------------- PROBLEM 10 - SORTED SQUARES ---------------------------
 
 def sorted_squares(arr: StaticArray) -> StaticArray:
@@ -97,6 +105,7 @@ def sorted_squares(arr: StaticArray) -> StaticArray:
     TODO: Write this implementation
     """
     pass
+
 
 # ------------------- BASIC TESTING -----------------------------------------
 
@@ -108,7 +117,7 @@ if __name__ == "__main__":
     for i, value in enumerate([7, 8, 6, -5, 4]):
         arr[i] = value
     print(arr)
-    result = min_max()
+    result = min_max(arr)
     if result:
         print(f"Min: {result[0]: 3}, Max: {result[1]}")
     else:
@@ -118,7 +127,7 @@ if __name__ == "__main__":
     arr = StaticArray(1)
     arr[0] = 100
     print(arr)
-    result = min_max()
+    result = min_max(arr)
     if result:
         print(f"Min: {result[0]}, Max: {result[1]}")
     else:
@@ -135,7 +144,7 @@ if __name__ == "__main__":
         for i, value in enumerate(case):
             arr[i] = value
         print(arr)
-        result = min_max()
+        result = min_max(arr)
         if result:
             print(f"Min: {result[0]: 3}, Max: {result[1]}")
         else:
