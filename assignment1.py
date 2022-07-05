@@ -24,7 +24,7 @@ def min_max(arr: StaticArray) -> (int, int):
         minimum = min(minimum, arr[number])
         maximum = max(maximum, arr[number])
 
-    return (minimum, maximum)
+    return minimum, maximum
 
 # ------------------- PROBLEM 2 - FIZZ_BUZZ ---------------------------------
 
@@ -90,7 +90,19 @@ def sa_range(start: int, end: int) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    pass
+    sa = StaticArray(abs(end - start) + 1)
+    increasing = end > start
+    index = 0
+    some_number = start
+    while some_number != end:
+        sa.set(index, some_number)
+        index += 1
+        if increasing:
+            some_number += 1
+        else:
+            some_number -= 1
+    sa.set(index, some_number)
+    return sa
 
 
 # ------------------- PROBLEM 6 - IS_SORTED ---------------------------------
