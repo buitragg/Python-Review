@@ -75,6 +75,14 @@ def rotate(arr: StaticArray, steps: int) -> StaticArray:
     """
     pass
 
+    index_number = arr.length()
+    steps = (steps % index_number + index_number) % index_number
+    new_arr = StaticArray(index_number)
+    for numbers in range(index_number):
+        new_arr[numbers] = arr[(numbers - steps + index_number) % index_number]
+
+    return new_arr
+
 
 # ------------------- PROBLEM 5 - SA_RANGE ----------------------------------
 
