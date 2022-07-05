@@ -32,7 +32,22 @@ def fizz_buzz(arr: StaticArray) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    pass
+
+    result = StaticArray(arr.length())
+
+    for number in range(arr.length()):
+        num = arr[number]
+        if num % 3 == 0 and num % 5 == 0:
+            result[number] = "fizzbuzz"
+        elif num % 3 == 0:
+            result[number] = "fizz"
+        elif num % 5 == 0:
+            result[number] = "buzz"
+        else:
+            result[number] = arr[number]
+    return result
+
+
 
 
 # ------------------- PROBLEM 3 - REVERSE -----------------------------------
@@ -41,7 +56,15 @@ def reverse(arr: StaticArray) -> None:
     """
     TODO: Write this implementation
     """
-    pass
+    first = 0
+    last = arr.length() - 1
+    while first < last:
+        num = arr.get(first)
+        arr.set(first, arr.get(last))
+        arr.set(last, num)
+        last -= 1
+        first += 1
+    return
 
 
 # ------------------- PROBLEM 4 - ROTATE ------------------------------------
