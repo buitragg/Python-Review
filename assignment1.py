@@ -168,7 +168,7 @@ def remove_duplicates(arr: StaticArray) -> StaticArray:
     total_values = 1
     new_array[0] = arr[0]
     for number in range(1, new_array.length()):
-        if not arr[number] == arr[number - 1]:
+        if not arr.get(number) == arr.get(number - 1):
             total_values += 1
             new_array[number] = arr[number]
     final_array = StaticArray(total_values)
@@ -189,7 +189,32 @@ def count_sort(arr: StaticArray) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    pass
+    max = -int(10 ** 100)
+    min = int(10 ** 100)
+    for number in range(arr.lenght()):
+        if max < arr.get(number):
+            max = arr.get(number)
+        if min > arr.get(number):
+            min = arr.get(number)
+    max = max - min
+    max += 1
+    count = StaticArray(max)
+    for number in range(max):
+        count[number] = 0
+    for number in range(arr.length()):
+        value = count.get(arr.get(number) - min)
+        count.set(arr.get(number) - min, value + 1)
+    for number in range(1, max):
+        count.set(number, count.get(number) + count.get(number - 1))
+    output = StaticArray(arr.length())
+    number = arr.length() - 1
+    while number >= 0:
+
+        output.set(arr.size() - index - 1, arr.get(number))
+        count.set(arr.get(number) - min, count.get(arr.get(number) - min) - 1)
+        number -= 1
+    return output
+
 
 
 # ------------------- PROBLEM 10 - SORTED SQUARES ---------------------------
