@@ -26,6 +26,7 @@ def min_max(arr: StaticArray) -> (int, int):
 
     return minimum, maximum
 
+
 # ------------------- PROBLEM 2 - FIZZ_BUZZ ---------------------------------
 
 def fizz_buzz(arr: StaticArray) -> StaticArray:
@@ -46,8 +47,6 @@ def fizz_buzz(arr: StaticArray) -> StaticArray:
         else:
             result[number] = arr[number]
     return result
-
-
 
 
 # ------------------- PROBLEM 3 - REVERSE -----------------------------------
@@ -111,7 +110,27 @@ def is_sorted(arr: StaticArray) -> int:
     """
     TODO: Write this implementation
     """
-    pass
+    if arr.length() == 1:
+        return 1
+    else:
+        order = 0
+        for number in range(arr.length() - 1):
+            val1 = arr.get(number)
+            val2 = arr.get(number + 1)
+
+            if number == 0:
+                if val1 > val2:
+                    order = -1
+                elif val1 < val2:
+                    order = 1
+            else:
+                if order == -1:
+                    if val1 <= val2:
+                        return 0
+                elif order == 1:
+                    if val1 >= val2:
+                        return 0
+        return order
 
 
 # ------------------- PROBLEM 7 - FIND_MODE -----------------------------------
@@ -120,7 +139,23 @@ def find_mode(arr: StaticArray) -> (int, int):
     """
     TODO: Write this implementation
     """
-    pass
+    max = arr[0]
+    max_count = 1
+    temp_count = 1
+    temp = arr[0]
+
+    for data in range(1, arr.length()):
+        if arr[data] == temp:
+            temp_count += 1
+        else:
+            if temp_count > max_count:
+                max_count = temp_count
+                max = temp
+
+            temp = arr[data]
+            temp_count = 1
+
+    return max, max_count
 
 
 # ------------------- PROBLEM 8 - REMOVE_DUPLICATES -------------------------
@@ -129,7 +164,23 @@ def remove_duplicates(arr: StaticArray) -> StaticArray:
     """
     TODO: Write this implementation
     """
-    pass
+    new_array = StaticArray()
+    total_values = 1
+    new_array[0] = arr[0]
+    for number in range(1, new_array.length()):
+        if not arr[number] == arr[number - 1]:
+            total_values += 1
+            new_array[number] = arr[number]
+    final_array = StaticArray(total_values)
+    final_index = 0
+    for number in range(new_array.length()):
+        if new_array[number] is not None:
+            final_array[final_index] = new_array[number]
+            final_index += 1
+    return final_array
+
+
+
 
 
 # ------------------- PROBLEM 9 - COUNT_SORT --------------------------------
